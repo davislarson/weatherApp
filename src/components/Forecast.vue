@@ -13,7 +13,7 @@ const emit = defineEmits(["newDayHourly"]);
 <template>
 	<div class="forecast">
 		<template v-for="(day, index) in forecast.forecast.forecastday" :key="index">
-			<ForecastDay class="forecast-day" v-if="index !== 0" :day="day" @newDayHourly="emit('newDayHourly', $event)" />
+			<ForecastDay class="forecast-day" :day="day" @newDayHourly="emit('newDayHourly', $event)" />
 		</template>
 	</div>
 </template>
