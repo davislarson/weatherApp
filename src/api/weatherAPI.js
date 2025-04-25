@@ -15,7 +15,7 @@ export async function getTodaysWeather(city) {
 }
 
 export async function getForecast(city) {
-	let fullURL = baseForecastURL + "&q=" + city + "&days=7&aqi=no&alerts=no";
+	let fullURL = baseForecastURL + "&q=" + city + "&days=9&aqi=no&alerts=no";
 	try {
 		let response = await fetch(fullURL);
 		let data = await response.json();

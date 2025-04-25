@@ -1,5 +1,5 @@
 <script setup>
-import ForecastDay from './ForecastDay.vue';
+import ForecastDay from "./ForecastDay.vue";
 
 const props = defineProps({
 	forecast: {
@@ -7,17 +7,13 @@ const props = defineProps({
 		required: true,
 	},
 });
+const emit = defineEmits(["newDayHourly"]);
 </script>
 
 <template>
 	<div class="forecast">
-		<div class="forecast">
-         <ForecastDay 
-            class="forecast-day" 
-            v-for="(day, index) in forecast.forecast.forecastday" 
-            :key="index" 
-            :day="day" 
-         />
-      </div>
+		<template v-for="(day, index) in forecast.forecast.forecastday" :key="index">
+			<ForecastDay class="forecast-day" v-if="index !== 0" :day="day" @newDayHourly="emit('newDayHourly', $event)" />
+		</template>
 	</div>
 </template>
