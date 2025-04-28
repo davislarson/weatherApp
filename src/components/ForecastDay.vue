@@ -17,7 +17,6 @@ const currentDay = new Date().toLocaleDateString("en-US", { day: "numeric" });
 const dayOfWeek = computed(() => {
 	const localDate = new Date(props.day.date + "T00:00:00");
 	const forecastDayNumeric = localDate.toLocaleDateString("en-US", { day: "numeric" });
-	console.log(forecastDayNumeric, currentDay);
 	const weekday = localDate.toLocaleDateString("en-US", { weekday: "short" });
 	return forecastDayNumeric === currentDay ? 'Today' : weekday;
 });

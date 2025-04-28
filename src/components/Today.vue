@@ -20,7 +20,13 @@ function changeSystem(system) {
 }
 
 const timeOnly = computed(() => {
-	return props.weather.location.localtime.split(" ")[1];
+  // time is expected in the format "YYYY-MM-DD HH:mm"
+  const timePart = props.weather.location.localtime.split(" ")[1]; // e.g., "14:05"
+  let [hour, minutes] = timePart.split(":");
+  hour = parseInt(hour);
+  const period = hour >= 12 ? "PM" : "AM";
+  const hour12 = hour % 12 === 0 ? 12 : hour % 12;
+  return `${hour12}:${minutes} ${period}`;
 });
 const dayOfWeek = computed(() => {
 	// Replace the space with "T" to comply with ISO format
@@ -33,7 +39,7 @@ const dayOfWeek = computed(() => {
 <template>
 	<div class="today">
 		<div class="today-city">
-			<h2>{{ weather.location.name }}</h2>
+			<h2>{{ weather.location.name }}, {{ weather.location.region }}</h2>
 			<h4>Currently</h4>
 		</div>
 		<div class="today-quick-items">

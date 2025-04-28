@@ -18,7 +18,6 @@ const props = defineProps({
 	const hour12 = hour24 % 12 === 0 ? 12 : hour24 % 12;
 	const period = hour24 >= 12 ? "PM" : "AM";
 	return `${hour12} ${period}`;
-
 })
 </script>
 
