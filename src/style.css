@@ -10,10 +10,9 @@
 .weatherContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
+  align-items: flex-start;
+  margin: 50px;
+  padding: 0 10px;
 }
 
 /* Search */
@@ -48,30 +47,35 @@
 
 /* Today Section */
 .today{
-  margin: 20px;
-  border: #ffff solid 1px;
-  padding: 10px;
+  width: 750px;
 }
 .today-quick-items {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 75%;
+  align-items: flex-start;
 }
 .today-temp{
   font-size: x-large; 
+  margin: 0 20px;
+  display: flex;
+  flex-direction: row;
+  width: 100px
+}
+.today-temp span {
+  display: inline
 }
 .today-percents {
   align-items: left;
   color: rgb(130, 129, 129);
   font-size: 10px;
+  margin: 0 20px;
 }
 .today-percents p {
   margin: 0;
 }
 .today-description {
   font-size: 20px;
+  margin: 0 20px
 }
 .today-description p {
   margin: 0;
@@ -87,8 +91,6 @@
 .forecast {
   display: flex;
   flex-direction: row;
-  width: 100%;
-  margin: 20px;
 }
 
 
@@ -124,14 +126,13 @@
 .hourly-section {
   display: flex;
   flex-direction: column;
-  align-items: left;
+  align-items: flex-start;
   width: 100%;
-  margin: 20px;
 }
 .hourly {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
 }
 .hour {

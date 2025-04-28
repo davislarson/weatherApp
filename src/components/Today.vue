@@ -44,9 +44,11 @@ const dayOfWeek = computed(() => {
 
 			<div class="today-temp">
 				<h3>{{ Math.round(weather.current['temp_' + currentSystem]) }} 
-					<span class="smallText" :class="currentSystem === 'f' ? '':'notSelected'" @click="changeSystem('f')">°F</span>
-					<span class="smallText">|</span>
-					<span class="smallText" :class="currentSystem === 'c' ? '':'notSelected'" @click="changeSystem('c')">°C</span>
+					<span>
+						<span class="smallText" :class="currentSystem === 'f' ? '':'notSelected'" @click="changeSystem('f')">°F</span>
+						<span class="smallText">|</span>
+						<span class="smallText" :class="currentSystem === 'c' ? '':'notSelected'" @click="changeSystem('c')">°C</span>
+					</span>
 				</h3>
 			</div>
 

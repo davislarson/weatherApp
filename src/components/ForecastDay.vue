@@ -7,37 +7,35 @@ const props = defineProps({
 		required: true,
 	},
 	system: {
-		type: String
+		type: String,
 	},
 });
 const emit = defineEmits(["newDayHourly"]);
 
-const currentDay = new Date().toLocaleDateString("en-US", { weekday: "short" });
+const currentDay = new Date().toLocaleDateString("en-US", { day: "numeric" });
 
 const dayOfWeek = computed(() => {
 	const localDate = new Date(props.day.date + "T00:00:00");
+	const forecastDayNumeric = localDate.toLocaleDateString("en-US", { day: "numeric" });
+	console.log(forecastDayNumeric, currentDay);
 	const weekday = localDate.toLocaleDateString("en-US", { weekday: "short" });
-	return weekday === currentDay ? "Today" : weekday;
+	return forecastDayNumeric === currentDay ? 'Today' : weekday;
 });
 </script>
 
 <template>
-	<div 
-    class="forecast-day" 
-    @click="$emit('newDayHourly', props.day.hour)"
-	  title='Click to see hourly forecast'
-    >
+	<div class="forecast-day" @click="$emit('newDayHourly', props.day.hour)" title="Click to see hourly forecast">
 		<p>{{ dayOfWeek }}</p>
 		<img :src="day.day.condition.icon" :alt="`Weather icon for ${day.day.condition.text} weather`" />
 		<p class="forecast-temp">
-			<span class="max-temp">{{ Math.round(day.day['maxtemp_' + system]) }}°</span>
-			<span class="min-temp">{{ Math.round(day.day['mintemp_' + system]) }}°</span>
+			<span class="max-temp">{{ Math.round(day.day["maxtemp_" + system]) }}°</span>
+			<span class="min-temp">{{ Math.round(day.day["mintemp_" + system]) }}°</span>
 		</p>
 	</div>
 </template>
 
 <style scoped>
 .selected {
-  background-color: rgb(68, 67, 67);
+	background-color: rgb(68, 67, 67);
 }
 </style>
