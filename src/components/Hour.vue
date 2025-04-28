@@ -5,7 +5,10 @@ const props = defineProps({
   hourData: {
     type: Object,
     required: true
-  }
+  },
+   system: {
+      type: String
+   }
 });
 
   const hourOnly = computed(() => {
@@ -25,7 +28,7 @@ const props = defineProps({
          <p>{{ hourOnly }}</p>
          <img :src="hourData.condition.icon" :alt="`Weather icon for ${hourData.condition.text} weather`" />
          <p class="forecast-temp">
-            <span class="max-temp">{{ Math.round(hourData.temp_f) }}°</span>
+            <span class="max-temp">{{ Math.round(hourData['temp_' + system]) }}°</span>
          </p>
       </div>
    </div>

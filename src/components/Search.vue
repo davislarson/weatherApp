@@ -42,11 +42,13 @@ function searchCity() {
 <div class="search">
    <h1>Weather App</h1>
    <p v-if="error" class="error">{{ error }}</p>
+   <div class="searchBar">
+      <label class="searchLabel">
+         <input ref="inputRef" type="text" v-model="search" placeholder="Search for a city..." @keyup.enter="searchCity"/>
+      </label>
+      <button class="searchButton" @click="searchCity">
+         Search
+      </button>
+   </div>
 </div>
-	<label>
-		<input ref="inputRef" type="text" v-model="search" placeholder="Search for a city..." @keyup.enter="searchCity"/>
-	</label>
-   <button @click="searchCity">
-      Search
-   </button>
 </template>

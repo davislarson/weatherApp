@@ -7,6 +7,10 @@ const props = defineProps({
 		type: Object,
 		required: true,
 	},
+   system: {
+      type: String,
+      required: true,
+   },
 });
 const emit = defineEmits(["newDayHourly"]);
 const selectedDay = ref(0);
@@ -26,6 +30,7 @@ function handleNewDayHourly(value, index) {
             class="forecast-day" 
             :day="day" 
             :class="(index === selectedDay) ? 'selected' : ''"
+            :system="system"
             @newDayHourly="value => handleNewDayHourly(value, index)" />
 		</template>
 	</div>

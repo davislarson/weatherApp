@@ -6,6 +6,9 @@ const props = defineProps({
 		type: Object,
 		required: true,
 	},
+	system: {
+		type: String
+	},
 });
 const emit = defineEmits(["newDayHourly"]);
 
@@ -27,8 +30,14 @@ const dayOfWeek = computed(() => {
 		<p>{{ dayOfWeek }}</p>
 		<img :src="day.day.condition.icon" :alt="`Weather icon for ${day.day.condition.text} weather`" />
 		<p class="forecast-temp">
-			<span class="max-temp">{{ Math.round(day.day.maxtemp_f) }}°</span>
-			<span class="min-temp">{{ Math.round(day.day.mintemp_f) }}°</span>
+			<span class="max-temp">{{ Math.round(day.day['maxtemp_' + system]) }}°</span>
+			<span class="min-temp">{{ Math.round(day.day['mintemp_' + system]) }}°</span>
 		</p>
 	</div>
 </template>
+
+<style scoped>
+.selected {
+  background-color: rgb(68, 67, 67);
+}
+</style>

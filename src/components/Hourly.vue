@@ -6,9 +6,10 @@ const props = defineProps({
 		type: Array,
 		required: true,
 	},
+	system: {
+		type: String
+	}
 });
-
-console.log(props.hourlyForecast);
 
 const dayOfWeek = computed(() => {
 	const localTimeISO = props.hourlyForecast[0].time.replace(" ", "T");
@@ -29,7 +30,7 @@ const currentHour = new Date().getHours();
 
 		<div class="hourly">
 			<template v-for="(hour, index) in hourlyForecast" :key="index">
-				<Hour v-if="currentHour <= index" :hourData="hour" />
+				<Hour v-if="currentHour <= index" :hourData="hour" :system="system"/>
 			</template>
 		</div>
 	</div>

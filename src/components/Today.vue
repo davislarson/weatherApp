@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from "vue";
+import { computed, ref, defineEmits } from "vue";
 
 const props = defineProps({
 	weather: {
@@ -7,6 +7,17 @@ const props = defineProps({
 		required: true,
 	},
 });
+const emit = defineEmits(["changeSystem"]);
+const currentSystem = ref("f");
+
+function changeSystem(system) {
+	if (currentSystem.value === system) {
+		return;
+	}
+	currentSystem.value = system;
+
+	emit("changeSystem", system);
+}
 
 const timeOnly = computed(() => {
 	return props.weather.location.localtime.split(" ")[1];
@@ -23,6 +34,7 @@ const dayOfWeek = computed(() => {
 	<div class="today">
 		<div class="today-city">
 			<h2>{{ weather.location.name }}</h2>
+			<h4>Currently</h4>
 		</div>
 		<div class="today-quick-items">
 			<img
@@ -31,7 +43,11 @@ const dayOfWeek = computed(() => {
 			/>
 
 			<div class="today-temp">
-				<h3>{{ Math.round(weather.current.temp_f) }} °F | °C</h3>
+				<h3>{{ Math.round(weather.current['temp_' + currentSystem]) }} 
+					<span class="smallText" :class="currentSystem === 'f' ? '':'notSelected'" @click="changeSystem('f')">°F</span>
+					<span class="smallText">|</span>
+					<span class="smallText" :class="currentSystem === 'c' ? '':'notSelected'" @click="changeSystem('c')">°C</span>
+				</h3>
 			</div>
 
 			<div class="today-percents">
@@ -48,7 +64,9 @@ const dayOfWeek = computed(() => {
 					<span class="label">Wind:</span> <span class="value">{{ weather.current.wind_mph }} mph</span>
 				</p>
 				<p>
-					<span class="label">Feels Like:</span> <span class="value">{{ weather.current.feelslike_f }} °F</span>
+					<span class="label">Feels Like:</span> <span class="value">
+						{{ weather.current['feelslike_' + currentSystem] }} °F
+					</span>
 				</p>
 			</div>
 			<div class="today-description">
@@ -70,5 +88,8 @@ const dayOfWeek = computed(() => {
 	display: inline-block;
 	width: 80px; /* adjust the width to suit your design */
 	font-weight: bold;
+}
+.notSelected {
+	color: rgb(130, 129, 129);
 }
 </style>
