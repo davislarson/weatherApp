@@ -1,13 +1,16 @@
 <script setup>
-import { ref, watch } from 'vue'
+import { ref, onMounted } from 'vue'
 
 // Creates an event when searched
 const emit = defineEmits(['search'])
 // Creates a variable to hold the search value
 const search = ref('')
 const error = ref(null);
+const inputRef = ref(null);
 
-const searchedCity = sessionStorage.getItem('searchedCity');
+onMounted(() => {
+   if (inputRef.value) inputRef.value.focus();
+})
 
 // Function to search for a city
 function searchCity() {
@@ -41,7 +44,7 @@ function searchCity() {
    <p v-if="error" class="error">{{ error }}</p>
 </div>
 	<label>
-		<input type="text" v-model="search" placeholder="Search for a city..." />
+		<input ref="inputRef" type="text" v-model="search" placeholder="Search for a city..." @keyup.enter="searchCity"/>
 	</label>
    <button @click="searchCity">
       Search

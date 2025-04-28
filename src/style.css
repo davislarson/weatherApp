@@ -57,7 +57,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: #ffff solid 1px;
+  border-radius: 5px;
   padding: 15px;
   margin: 0 5px;
 }
@@ -75,6 +75,9 @@
 }
 .forecast-temp .min-temp {
   color: #989292;
+}
+.selected {
+  background-color: #413f3f;
 }
 
 /* Hourly */
