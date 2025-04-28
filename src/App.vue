@@ -76,9 +76,13 @@ async function handleSearch(searchedCity) {
       :hourlyForecast="hourlyForecast"
     />
   
+    <!-- The @ will take in an event passed from forecast day.
+        The user chooses a day they want to see the hourly for.
+        The event is the hourly data for that day. -->
     <Forecast 
       v-if="forecastWeather"
       :forecast="forecastWeather"
+      @new-day-hourly="hourlyForecast = $event"
     />
   </div>
     

@@ -18,7 +18,7 @@ const dayOfWeek = computed(() => {
 });
 
 function chooseDay() {
-	// Emit the newDayHourly event with the day's hourly data
+	// Emit the newDayHourly event with the date
 	emit("newDayHourly", props.day.hour);
 }
 </script>

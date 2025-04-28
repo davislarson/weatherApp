@@ -11,8 +11,9 @@ const emit = defineEmits(["newDayHourly"]);
 </script>
 
 <template>
-	<div class="forecast">
-		<template v-for="(day, index) in forecast.forecast.forecastday" :key="index">
+   <h2>Forecast</h2>
+   <div class="forecast">
+      <template v-for="(day, index) in forecast.forecast.forecastday" :key="index">
 			<ForecastDay class="forecast-day" :day="day" @newDayHourly="emit('newDayHourly', $event)" />
 		</template>
 	</div>

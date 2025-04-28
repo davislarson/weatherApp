@@ -93,7 +93,7 @@
   width: 100%;
 }
 .hour {
-  border: #ffff solid 1px;
+  /* border: #ffff solid 1px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
