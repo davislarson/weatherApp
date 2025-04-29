@@ -1,10 +1,9 @@
 <script setup>
-import { computed, ref, defineEmits } from "vue";
+import { computed, ref } from "vue";
 
 const props = defineProps({
 	weather: {
-		type: Object,
-		required: true,
+		type: Object
 	},
 });
 const emit = defineEmits(["changeSystem"]);
@@ -63,7 +62,7 @@ const dayOfWeek = computed(() => {
 					<span class="label">Humidity:</span> <span class="value">{{ weather.current.humidity }}%</span>
 				</p>
 				<p>
-					<span class="label">Precipitation:</span> <span class="value">{{ weather.current.precip_in }} in</span>
+					<span class="label">Chance of Rain:</span> <span class="value">{{ weather.forecast.forecastday[0].day.daily_chance_of_rain }}%</span>
 				</p>
 				<p>
 					<span class="label">UV Index:</span> <span class="value">{{ weather.current.uv }}</span>

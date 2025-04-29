@@ -23,7 +23,7 @@ const dayOfWeek = computed(() => {
 </script>
 
 <template>
-	<div class="forecast-day" @click="$emit('newDayHourly', props.day.hour)" title="Click to see hourly forecast">
+	<div class="forecast-day" @click="$emit('newDayHourly')" title="Click to see hourly forecast">
 		<p>{{ dayOfWeek }}</p>
 		<img :src="day.day.condition.icon" :alt="`Weather icon for ${day.day.condition.text} weather`" />
 		<p class="forecast-temp">

@@ -52,7 +52,7 @@
 .today-quick-items {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
 }
 .today-temp{
   font-size: x-large; 
@@ -72,13 +72,17 @@
 }
 .today-percents p {
   margin: 0;
+  white-space: nowrap;
+}
+.today-percents span {
+  margin-right: 20px;
 }
 .today-description {
   font-size: 20px;
   margin: 0 20px
 }
 .today-description p {
-  margin: 0;
+  margin: 10px;
 }
 .smallText {
   font-size: small;
