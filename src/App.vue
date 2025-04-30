@@ -87,7 +87,7 @@ async function handleSearch(searchedCity) {
 	<!-- Conditionally display error message -->
 	<div v-else-if="errorMessage" class="error">{{ errorMessage }}</div>
 
-	<div v-else class="weatherContainer">
+	<div v-else-if="forecastWeather && todaysWeather" class="weatherContainer">
 		<!-- Show weather components when no error -->
 		<Today v-if="todaysWeather" :weather="todaysWeather" @change-system="changeSystem" />
 
